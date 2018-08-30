@@ -10,7 +10,10 @@ class ArtisanController extends Controller
 {
     public function list()
     {
-        return response()->json(Artisan::all());
+        $commands = collect(Artisan::all())->map(function ($item, $key) {
+            return $item->getDescription();
+        });
+        return response()->json($commands);
     }
 
     public function command($name)
