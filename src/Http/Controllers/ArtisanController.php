@@ -52,13 +52,16 @@ class ArtisanController extends Controller
 
     public function run($name, Request $request)
     {
-        $commands = Artisan::all();
+        $arguments = $request->get('arguments', []);
+        $options = $request->get('options', []);
+        $cmd = 'php artisan '.$name;
 
-        $command = $commands[$name];
-        $arguments = $request->get('arguments');
-        $options = $request->get('options');
+        $params = ['--no-interaction' => true];
+        $params = array_merge($params, $options);
+        $params = array_merge($params, $arguments);
 
-        // @TODO INTERACTIVE COMMANDS?
-        $exitCode = Artisan::call($name, array_merge($arguments, $options));
+        Artisan::call($name, $params);
+
+        return Artisan::output();
     }
 }

@@ -16,4 +16,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/commands', 'CyberDuck\NovaArtisan\Http\Controllers\ArtisanController@list');
 Route::get('/commands/{name}', 'CyberDuck\NovaArtisan\Http\Controllers\ArtisanController@command');
-Route::post('/commands/{name}', 'CyberDuck\NovaArtisan\Http\Controllers\ArtisanController@run');
+Route::any('/commands/{name}/run', 'CyberDuck\NovaArtisan\Http\Controllers\ArtisanController@run');

@@ -11,9 +11,10 @@
     },
     "devDependencies": {
         "cross-env": "^5.0.0",
-        "laravel-mix": "^1.0"
+        "laravel-mix": "^2.1.14"
     },
     "dependencies": {
+        "prismjs": "^1.15.0",
         "vue": "^2.5.0"
     }
 }
